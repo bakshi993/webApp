@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#firstButton").click(function() {
+                $("#first .inner").text("first");
+            });
+            $("#secondButton").click(function() {
+                $("#second .inner").text("second");
+            });
+            $("#thirdButton").click(function() {
+                $("#third .inner").text("third");
+            });
+            $("#fourthButton").click(function() {
+                $("#first .inner").text("");
+                $("#second .inner").text("");
+                $("#third .inner").text("");
+                $("#fourth .inner").text("");
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="first">
+    <div class="inner c">
+    </div>
+</div>
+<div id="second">
+    <div class="inner b">
+    </div>
+</div>
+<div id="third">
+    <div class="inner a">
+    </div>
+</div>
+<button id="firstButton">First</button>
+<button id="secondButton">Second</button>
+<button id="thirdButton">Third</button>
+<button id="fourthButton">Clear</button>
+</body>
+</html>

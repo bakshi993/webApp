@@ -1,0 +1,156 @@
+  * {
+          box-sizing: border-box;
+          max-width: auto;
+          height: auto;
+      }
+      .top-margin-1 {
+          margin-top: 1%;
+      }
+      .font-16 {
+          font-size: 16px;
+      }
+      .border {
+          border: 0.1px outset black;
+      }
+      .no-border {
+          border: none;
+      }
+      .bg-color-overall {
+          background-color: #1a1a1a;
+      }
+      .bg-color-black {
+          background-color: black;
+      }
+      .bg-color-blue {
+          background-color: blue;
+      }
+      .bg-color-grey {
+          background-color: grey;
+      }
+      .bg-color-orange {
+          background-color: orange;
+      }
+      .bg-color-green {
+          background-color: green;
+      }
+      .float-left {
+          float: left;
+      }
+      .float-top {
+          float: top;
+      }
+      .text-center {
+          text-align: center;
+      }
+      .text-left {
+          text-align: left;
+      }
+      span,.text-white{
+          color: white;
+          text-align: center;
+      }
+      .text-green {
+        color: green;
+      }
+      .bold {
+          font-weight: bold;
+      }
+      .market-up {
+          color: green;
+      }
+      .market-down {
+          color: red;
+      }
+      .scroll-y {
+          overflow-y: scroll;
+      }
+      .height-3 {
+          height: 3%;
+      }
+      .height-5 {
+          height: 5%;
+      }
+      .height-5-vh {
+          height: 5vh;
+      }
+      .height-10 {
+          height: 10%;
+      }
+      .height-10-vh {
+          height: 10vh;
+      }
+      .height-20 {
+          height: 20%;
+      }
+      .height-50 {
+          height: 50%;
+      }
+      .height-80 {
+          height: 80%;
+      }
+      .height-92 {
+          height: 92%;
+      }
+      .height-90 {
+          height: 90%;
+      }
+      .height-90-vh {
+          height: 90vh;
+      }
+      .height-95 {
+          height: 95%;
+      }
+      .height-95-vh {
+          height: 95vh;
+      }
+      .height-100 {
+          height: 100%;
+      }
+      .height-100-vh {
+          height: 100vh;
+      }
+      .width-10 {
+          width: 10%;
+      }
+      .width-18 {
+          width: 18%;
+      }
+      .width-15 {
+          width: 15%;
+      }
+      .width-20 {
+          width: 20%;
+      }
+      .width-25 {
+          width: 25%;
+      }
+      .width-30 {
+          width: 30%;
+      }
+      .width-40 {
+          width: 40%;
+      }
+      .width-70 {
+          width: 70%;
+      }
+      .width-75 {
+          width: 75%;
+      }
+      .width-80 {
+          width: 80%;
+      }
+      .width-90 {
+          width: 90%;
+      }
+      .width-100 {
+          width: 100%;
+      }
+      .buy {
+          background-color: green;
+      }
+      .sell {
+          background-color: red;
+      }
+      #home:hover,#buckets:hover,#holdings:hover, #positions:hover, #settings:hover {
+          background-color: black;
+      }

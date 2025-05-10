@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <link th:href = "@{/home.min.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/home.min.js}"></script>
+</head>
+<body class="bg-color-overall">
+<div>
+    <div class="height-5-vh width-100  float-left text-center">
+      <div class="width-40 height-100 float-left">
+        <div class="width-20 height-100 float-left">
+          <div class="width-100 height-50 float-top">
+            <span>
+              Sensex
+            </span>
+          </div>
+          <div class="width-100 height-50 float-top">
+              <span id="ltp-265">
+              </span>
+              <span id="change-265">
+              </span>
+          </div>
+        </div>
+        <div class="width-20 height-100 float-left">
+          <div class="width-100 height-50 float-top">
+            <span>
+              Nifty
+            </span>
+          </div>
+          <div class="width-100 height-50 float-top">
+              <span id="ltp-256265">
+              </span>
+              <span id="change-256265">
+              </span>
+          </div>
+        </div>
+        <div class="width-20 height-100 float-left">
+          <div class="width-100 height-50 float-top">
+            <span>
+              Bank Nifty
+            </span>
+          </div>
+          <div class="width-100 height-50 float-top">
+              <span id="ltp-260105">
+              </span>
+              <span id="change-260105">
+              </span>
+          </div>
+        </div>
+        <div class="width-20 height-100 float-left">
+          <div class="width-100 height-50 float-top">
+            <span>
+              Fin Nifty
+            </span>
+          </div>
+          <div class="width-100 height-50 float-top">
+              <span id="ltp-257801">
+              </span>
+              <span id="change-257801">
+              </span>
+          </div>
+        </div>
+        <div class="width-20 height-100 float-left">
+          <div class="width-100 height-50 float-top">
+            <span>
+              Gift Nifty
+            </span>
+          </div>
+          <div class="width-100 height-50 float-top">
+              <span id="ltp-291849">
+              </span>
+              <span id="change-291849">
+              </span>
+          </div>
+        </div>
+      </div>
+      <div class="width-20 height-100 float-left">
+        <!--span class="text-white">Trade Helper</span-->
+      </div>
+      <div class="width-40 height-100 float-left">
+        <div class="width-25 height-100 float-left">
+          <div class="width-100 height-50 float-top">
+            <span>
+              Total Margin
+            </span>
+          </div>
+          <div class="width-100 height-50 float-top">
+              <span class="text-green">&#8377</span><span id="margin" class="text-green"></span>
+          </div>
+        </div>
+        <div class="width-25 height-100 top-margin-1 float-left">
+          <span id="currentTime"></span>
+        </div>
+        <div class="width-25 height-100 float-left">
+          <button class="bg-color-green top-margin-1">Refresh Cache</button>
+        </div>
+        <div class="width-25 height-100 float-left">
+          <button class="bg-color-orange top-margin-1">Logout</button>
+        </div>
+      </div>
+    </div>
+    <div class="border height-90-vh width-100 float-left">
+      <div class="width-30 height-100 float-left">
+        <div class="height-5 text-center">
+          <div class="border height-100 float-top">
+            <span>Watchlist</span>
+          </div>
+        </div>
+        <div class="height-92 scroll-y text-center text-white">
+          <div class="border bg-color-blue width-100">
+            <table class="width-100">
+              <tr>
+                <td class="width-5"><input type="checkbox"></td>
+                <td class="width-25">Instrument</td>
+                <td class="width-10">Exchange</td>
+                <td class="width-15">Qty</td>
+                <td class="width-15">LTP</td>
+                <td class="width-10">Change</td>
+                <td class="width-20">Action</td>
+              </tr>
+            </table>
+          </div>
+          <div th:each="watchList : ${watchListEntries}" th:classappend="${watchList.instrument_token}">
+            <table class="width-100 border">
+              <tr>
+                <td class="width-5"><input type="checkbox"></td>
+                <td class="width-25" th:text="${watchList.tradingsymbol}"></td>
+                <td class="width-10" th:text="${watchList.exchange}"></td>
+                <td class="width-15" th:id="'qty-' + ${watchList.instrument_token}"></td>
+                <td class="width-15" th:id="'ltp-' + ${watchList.instrument_token}"></td>
+                <td class="width-10" th:id="'change-' + ${watchList.instrument_token}"></td>
+                <td class="width-20">
+                  <button class='buy text-white'>Buy</button>
+                  <button class='sell text-white'>Sell</button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="height-3 width-100 float-left">
+          <div class="width-80 float-left">
+            <input type="text" class="width-100">
+          </div>
+          <div class="width-20 float-left">
+            <button class="width-100 bg-color-orange">Search</button>
+          </div>
+        </div>
+      </div>
+      <div class="width-70 height-100 float-left">
+        <div class="width-100 height-5 float-left text-center">
+          <div id="home" class="border width-18 height-100 float-left"><span>Home</span></div>
+          <div id="buckets" class="border width-18 height-100 float-left"><span>Buckets</span></div>
+          <div id="holdings" class="border width-18 height-100 float-left"><span>Holdings</span></div>
+          <div id="positions" class="border width-18 height-100 float-left"><span>Positions</span></div>
+          <div id="mutualFunds" class="border width-18 height-100 float-left"><span>Mutual Funds</span></div>
+          <div id="settings" class="border width-10 height-100 float-left"><span>Setting</span></div>
+        </div>
+        <div class="width-100 height-95 float-left scroll-y">
+          <div id="homeWidget" class="height-100" hidden="hidden">
+
+          </div>
+          <div id="bucketsWidget" class="height-100" hidden="hidden">
+
+          </div>
+          <div id="holdingsWidget" class="height-100" hidden="hidden">
+
+          </div>
+          <div id="positionsWidget" class="height-100 border width-100" hidden="hidden" style="padding:30px 150px;">
+            <div>
+              <table id="netPositionHeader" class="bg-color-blue text-white width-100">
+                <tr>
+                  <td class="width-40">Instrument</td>
+                  <td class="width-10">Product</td>
+                  <td class="width-10">QTY</td>
+                  <td class="width-15">Avg</td>
+                  <td class="width-15">LTP</td>
+                  <td class="width-10">PnL</td>
+                </tr>
+              </table>
+            </div>
+            <div id="netPositionContent">
+              <table id="netPosition" class="text-white width-100">
+                <tr th:each="position : ${netPositions}">
+                  <td class="width-40" th:text="${position.tradingSymbol}"></td>
+                  <td class="width-10" th:text="${position.product}"></td>
+                  <td class="width-10" th:text="${position.netQuantity}"></td>
+                  <td class="width-15" th:text="${position.averagePrice}"></td>
+                  <td class="width-15"></td>
+                  <td class="width-10" th:text="${position.pnl}"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div id="mutualFundsWidget" class="height-100" hidden="hidden">
+
+          </div>
+          <div id="settingsWidget" class="height-100" hidden="hidden">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="height-5-vh width-100 float-left text-center">
+      <span>Copyright</span>
+    </div>
+</div>
+</body>
+</html>
